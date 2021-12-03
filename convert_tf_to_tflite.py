@@ -1,5 +1,16 @@
+# Copyright 2021 The Kalray Authors. All Rights Reserved.
+#
+# Licensed under the MIT License;
+# you may not use this file except in compliance with the License.
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 import os
-import cv2
 import glob
 import numpy
 import tensorflow as tf
@@ -48,4 +59,3 @@ if not os.path.exists(dest_dir_path):
 with open(dest_model_path, 'wb') as f:
     f.write(tflite_model_quant)
 print('TFlite model written at {}'.format(dest_model_path))
-

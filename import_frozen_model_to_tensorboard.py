@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# ================================
+#
 """Imports a protobuf model as a graph in Tensorboard."""
 
 from __future__ import absolute_import
