@@ -1,0 +1,16 @@
+name: resnet_50
+framework: tensorflow
+
+frozen_pb: frozen_model/frozen.model.pb
+graph_optim: true
+quantize_fp32_to_fp16: false
+
+input_nodes_name:
+    - image
+input_nodes_shape:
+    - [224, 1, 224, 3]
+output_nodes_name:
+    - Identity 
+output_nodes_shape:
+    - [1000, 1, 1, 1]
+

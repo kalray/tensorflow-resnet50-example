@@ -1,0 +1,8 @@
+.cache
+saved_model/
+frozen_model/
+tflite_model/
+*.pyc
+*.log
+*.pb
+*.swp
