@@ -21,7 +21,7 @@ import numpy as np
 from functools import reduce
 
 from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.resnet50 import decode_predictions
+from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 
 
 def array_from_fifo(fd, dtype, count):
@@ -72,8 +72,9 @@ def run_kann_inference(image_dir, fifos_in, fifos_out, input_name, output_name,
         img_path = os.path.join(image_dir, image_file)
         img = image.load_img(img_path, target_size=(input_shape[0][0], input_shape[0][2]))
         img_prepared = image.img_to_array(img)
-        # img_prepared = np.expand_dims(img_prepared, axis=0)  # batch
-        img_prepared = np.array([img_prepared] * batch_size, dtype=img_prepared.dtype)
+        img_prepared = np.expand_dims(img_prepared, axis=0)  # batch
+        # img_prepared = np.array([img_prepared] * batch_size, dtype=img_prepared.dtype)
+        img_prepared = preprocess_input(img_prepared)
         img_prepared = [img_prepared.transpose((1, 0, 2, 3))]
         for p, i in zip(img_prepared, kann_in.values()):
             p.tofile(i['fifo'], '')
