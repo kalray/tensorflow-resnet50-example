@@ -128,11 +128,10 @@ def main(data_dir_path, model_dir):
 
     logfile_path = os.path.join(os.getcwd(), 'inference.log')
     flog = open(logfile_path, 'w+')
-    kann_proc = subprocess.Popen(['kann_opencl_cnn',
-                                  os.environ['OPENCL_CNN_POCL_DIR'],
-                                  kann_bin_path, fifos_dir], bufsize=-1,
+    kann_proc = subprocess.Popen(['kann_opencl_cnn', '.',
+                                 kann_bin_path, fifos_dir], bufsize=-1,
                                  stdout=flog,
-                                 )
+                                )
 
     run_kann_inference(data_dir_path, fifos_in, fifos_out,
                        config_dict['input_nodes_name'], config_dict['output_nodes_name'],
